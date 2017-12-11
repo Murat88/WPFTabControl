@@ -1,0 +1,144 @@
+﻿<UserControl x:Class="Ozyaysan.UCAddProduct"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+            Height="auto">
+    <UserControl.Resources>
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="DarkGray" 
+                            CornerRadius="3" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label  Grid.Row="0" Grid.Column="0" Content="OEM Kodu" Height="35" HorizontalAlignment="Left"  Name="label2" VerticalAlignment="Center" FontSize="16" />
+        <TextBox  Grid.Row="0" Grid.Column="1"  Height="30" HorizontalAlignment="Left"  Name="txtCode" VerticalAlignment="Center" Width="180" FontSize="16" />
+        <Label Grid.Row="0" Grid.Column="2" Content="Sarım Sayısı" Height="35" HorizontalAlignment="Left"  Name="label3" VerticalAlignment="Center" FontSize="16" />
+        <TextBox Grid.Row="0" Grid.Column="3" Height="30" HorizontalAlignment="Left"  Name="txtNumTurns" VerticalAlignment="Center" Width="180" PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16" />
+        <Label Grid.Row="1" Grid.Column="0" Content="Kategori" Height="35" HorizontalAlignment="Left"  Name="label5" VerticalAlignment="Center" FontSize="16" />
+        <ComboBox Grid.Row="1" Grid.Column="1" Height="30" HorizontalAlignment="Left"  Name="cmbCategory" VerticalAlignment="Center" Width="180" SelectionChanged="cmbCategory_SelectionChanged" FontSize="16" />
+        <Label Grid.Row="1" Grid.Column="2" Content="Yay çapı (mm)" Height="35" HorizontalAlignment="Left" Name="label6" VerticalAlignment="Center" FontSize="16" />
+        <TextBox Grid.Row="1" Grid.Column="3"  Height="30" HorizontalAlignment="Left"  Name="txtDiameter" VerticalAlignment="Center" Width="180" PreviewKeyDown="KeyDown_OnlyNumericAndDecimal" FontSize="16" />
+        <Label  Grid.Row="2" Grid.Column="0" Content="Ağırlık (gr)" Height="35" HorizontalAlignment="Left"  Name="label8" VerticalAlignment="Center" FontSize="16" />
+        <TextBox  Grid.Row="2" Grid.Column="1" Height="30" HorizontalAlignment="Left"  Name="txtWeight" VerticalAlignment="Center" Width="180" PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16" />
+        <Label Grid.Row="2" Grid.Column="2" Content="Doğrultma Boyu" Height="35" HorizontalAlignment="Left"  Name="label7" VerticalAlignment="Center" FontSize="16" />
+        <TextBox Grid.Row="2" Grid.Column="3" Height="30" HorizontalAlignment="Left"  Name="txtStraighteningLength" VerticalAlignment="Center" Width="180" PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16" />
+        <Label Grid.Row="3" Grid.Column="0" Content="Hammadde Öz." Height="35" HorizontalAlignment="Left"  Name="label9" VerticalAlignment="Center" RenderTransformOrigin="0.506,0.262" FontSize="16" />
+        <TextBox Grid.Row="3" Grid.Column="1" Height="30" HorizontalAlignment="Left"  Name="txtRawMatarialCharacters" VerticalAlignment="Center" Width="180" FontSize="16" />
+        <Label Grid.Row="3" Grid.Column="2" Content="Yayın Teknik Resmi" Height="35" Name="label18" VerticalAlignment="Center" FontSize="16" />
+        <StackPanel Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image Grid.Row="3" Grid.Column="3" Height="24" HorizontalAlignment="Left"  Name="imgTecnique" Source="/Ozyaysan;component/images/Icon/File2.png" Stretch="Fill" VerticalAlignment="Center" Width="33" Uid="5" MouseDown="imgPicture_MouseDown" />
+            <Image Height="22" HorizontalAlignment="Left"  Name="imgOkTecnique" Source="/Ozyaysan;component/images/Icon/Okey.png" Stretch="Fill" VerticalAlignment="Center" Width="27" Visibility="Hidden" />
+        </StackPanel>
+        <Label Grid.Row="4" Grid.Column="0" Content="Extra Kod1" Height="35" HorizontalAlignment="Left"  Name="label1" VerticalAlignment="Center" FontSize="16" />
+        <TextBox Grid.Row="4" Grid.Column="1" Height="30" HorizontalAlignment="Left"  Name="txtExtraKod1" VerticalAlignment="Center" Width="180" FontSize="16" />
+        <Label Grid.Row="4" Grid.Column="2" Content="Extra Kod2" Height="35" HorizontalAlignment="Left"  Name="label12" VerticalAlignment="Center" FontSize="16" />
+        <TextBox Grid.Row="4" Grid.Column="3" Height="30" HorizontalAlignment="Left"  Name="txtExtraKod2" VerticalAlignment="Center" Width="180" FontSize="16" />
+        <Label Grid.Row="5" Grid.Column="0" Content="Extra Kod3" Height="35" HorizontalAlignment="Left"  Name="label13" VerticalAlignment="Center" FontSize="16" />
+        <TextBox Grid.Row="5" Grid.Column="1" Height="30" HorizontalAlignment="Left"  Name="txtExtraKod3" VerticalAlignment="Center" Width="180" FontSize="16" />
+        <Label Grid.Row="5" Grid.Column="2" Content="Extra Kod4" Height="35" HorizontalAlignment="Left"  Name="label14" VerticalAlignment="Center" FontSize="16" />
+        <TextBox Grid.Row="5" Grid.Column="3" Height="30" HorizontalAlignment="Left"  Name="txtExtraKod4" VerticalAlignment="Center" Width="180" FontSize="16" />
+        <Label Grid.Row="6" Grid.Column="0" Content="Yay Resmi 1" Height="35" HorizontalAlignment="Left"  Name="label122" VerticalAlignment="Center" Width="119.563" FontSize="16" Margin="0,10" />
+        <StackPanel Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image  Height="24" HorizontalAlignment="Left" Name="imgPicture1" Stretch="Fill" VerticalAlignment="Center" Width="33" Source="/Ozyaysan;component/images/Icon/File2.png" Uid="1" MouseDown="imgPicture_MouseDown" />
+            <Image Height="22" HorizontalAlignment="Left"  Name="imgOk1" Stretch="Fill" VerticalAlignment="Center" Width="27" Source="/Ozyaysan;component/images/Icon/Okey.png" Visibility="Hidden" />
+        </StackPanel>
+        <Label Grid.Row="6" Grid.Column="2" Content="Yay Resmi 2" Height="35" HorizontalAlignment="Left" Name="label15" VerticalAlignment="Center" Width="109.517" FontSize="16" Margin="0,10" />
+        <StackPanel Grid.Row="6" Grid.Column="3" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image  Height="24" HorizontalAlignment="Left"  Name="imgPicture2" Source="/Ozyaysan;component/images/Icon/File2.png" Stretch="Fill" VerticalAlignment="Center" Width="33" Uid="2" MouseDown="imgPicture_MouseDown" />
+            <Image Height="22" HorizontalAlignment="Left"  Name="imgOk2" Source="/Ozyaysan;component/images/Icon/Okey.png" Stretch="Fill" VerticalAlignment="Center" Width="27" Visibility="Hidden" />
+        </StackPanel>
+        <Label Grid.Row="7" Grid.Column="0" Content="Yay Resmi 3" Height="35" HorizontalAlignment="Left"  Name="label16" VerticalAlignment="Center" Width="119.563" FontSize="16" Margin="0,10" />
+        <StackPanel Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image  Height="24" HorizontalAlignment="Left"  Name="imgPicture3" Source="/Ozyaysan;component/images/Icon/File2.png" Stretch="Fill" VerticalAlignment="Center" Width="33" Uid="3" MouseDown="imgPicture_MouseDown" />
+            <Image Height="22" HorizontalAlignment="Left"  Name="imgOk3" Source="/Ozyaysan;component/images/Icon/Okey.png" Stretch="Fill" VerticalAlignment="Center" Width="27" Visibility="Hidden" />
+        </StackPanel>
+        <Label Grid.Row="7" Grid.Column="2" Content="Yay Resmi 4" Height="35" HorizontalAlignment="Left"  Name="label17" VerticalAlignment="Center" Width="125.577" FontSize="16" Margin="0,10" />
+        <StackPanel Grid.Row="7" Grid.Column="3" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image  Height="24" HorizontalAlignment="Left" Name="imgPicture4" Source="/Ozyaysan;component/images/Icon/File2.png" Stretch="Fill" VerticalAlignment="Center" Width="33" Uid="4" MouseDown="imgPicture_MouseDown" />
+            <Image Height="22" HorizontalAlignment="Left"  Name="imgOk4" Source="/Ozyaysan;component/images/Icon/Okey.png" Stretch="Fill" VerticalAlignment="Center" Width="27" Visibility="Hidden" />
+        </StackPanel>
+
+        <Label Grid.Row="8" Grid.Column="0" Content="Stok" Height="35" HorizontalAlignment="Left"  Name="label20" VerticalAlignment="Center" FontSize="16" Margin="0,10" Width="69.443" />
+        <TextBox Grid.Row="8" Grid.Column="1" Height="30" HorizontalAlignment="Left"  Name="txtStock" VerticalAlignment="Center" Width="180" Text="0" PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16" />
+        <Label Grid.Row="8" Grid.Column="2" Content="Tel çapı (mm)" Height="35" HorizontalAlignment="Left"  Name="label26" VerticalAlignment="Center" FontSize="16" Margin="0,10" Width="125.577" />
+        <TextBox Grid.Row="8" Grid.Column="3" Height="30" HorizontalAlignment="Left" PreviewKeyDown="KeyDown_OnlyNumeric"   Name="txtWireDiameter" VerticalAlignment="Center" Width="180" FontSize="16" />
+
+        <Button Grid.Row="9" Grid.Column="0" Height="36" HorizontalAlignment="Left"  Click="btnSave_Click"  Name="btnSave" Style="{StaticResource MyButtonStyle}" VerticalAlignment="Center" Content="Kaydet" Width="132" FontSize="16">
+            <Button.Background>
+                <ImageBrush ImageSource="/Ozyaysan;component/images/Icon/btn_Update.png" Stretch="Fill" TileMode="None" />
+            </Button.Background>
+        </Button>
+
+
+        <!--<Border BorderBrush="White" BorderThickness="1" Height="83" HorizontalAlignment="Left" Margin="310,366,0,0" Name="brdTorsiyon" VerticalAlignment="Top" Width="306" Visibility="Hidden">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Height="40" VerticalAlignment="Top">
+                    <TextBlock Height="23" Name="textBlock1" Text="Hatve Arası"  HorizontalAlignment="Left" Width="107" />
+                    <TextBox Height="23" HorizontalAlignment="Left"  Name="txtHatve" VerticalAlignment="Center" Width="120" Margin="40,0,0,0" PreviewKeyDown="KeyDown_OnlyNumeric" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="40" VerticalAlignment="Top">
+                    <TextBlock Height="23" HorizontalAlignment="Left"  Name="textBlock2" Text="Toplam Boy" Width="107" />
+                    <TextBox Height="23" HorizontalAlignment="Left"  Name="txtToplamBoy" VerticalAlignment="Center"  Width="120" Margin="40,0,0,0" PreviewKeyDown="KeyDown_OnlyNumeric" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Height="112" HorizontalAlignment="Left" Margin="310,366,0,0" Name="brdCekme" VerticalAlignment="Top" Width="306" Visibility="Hidden">
+            <StackPanel>
+                <StackPanel Height="35" Orientation="Horizontal" VerticalAlignment="Top">
+                    <TextBlock Height="23" HorizontalAlignment="Left" Name="textBlock3" Text="Kanca Arası" Width="107" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="40,0,0,0" Name="txtKancaArasi" VerticalAlignment="Center" Width="120" PreviewKeyDown="KeyDown_OnlyNumeric" />
+                </StackPanel>
+                <StackPanel Height="35" Orientation="Horizontal" VerticalAlignment="Top">
+                    <TextBlock Height="23" HorizontalAlignment="Left" Name="textBlock4" Text="İçten içe Boy" Width="107" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="40,0,0,0" Name="txtIctenice" VerticalAlignment="Center" Width="120" PreviewKeyDown="KeyDown_OnlyNumeric" />
+                </StackPanel>
+                <StackPanel Height="35" Orientation="Horizontal" VerticalAlignment="Top">
+                    <TextBlock Height="23" HorizontalAlignment="Left" Name="textBlock44" Text="Kanca Yönü" Width="107" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="40,0,0,0" Name="txtkancaYon" VerticalAlignment="Center" Width="120" />
+                </StackPanel>
+            </StackPanel>
+        </Border>-->
+    </Grid>
+</UserControl>

@@ -1,0 +1,79 @@
+﻿<Window x:Class="Ozyaysan.Windows.W_UseRawMaterials"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="W_UseRawMaterials" Height="391" Width="440" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="DarkGray" 
+                            CornerRadius="3" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,16,0,0" Name="textBlock1" Text="Hammadde" VerticalAlignment="Top" Width="108" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,243,0,0" Name="textBlock2" Text="Kullanılacak Miktar" VerticalAlignment="Top" Width="108" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="167,15,0,0" Name="textBlock3" Text=":" VerticalAlignment="Top" Width="11" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="167,242,0,0" Name="textBlock4" Text=":" VerticalAlignment="Top" Width="11" />
+        <Button Content="Seç" Height="23" HorizontalAlignment="Left" Margin="194,12,0,0" Name="btnPickRawMaterial" VerticalAlignment="Top" Width="43" Cursor="Hand" Click="btnPickRawMaterial_Click" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,45,0,0" Name="textBlock7" Text="Tel Çapı" VerticalAlignment="Top" Width="83" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="167,45,0,0" Name="textBlock8" Text=":" VerticalAlignment="Top" Width="11" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="194,44,0,0" Name="txtWireDiameter" VerticalAlignment="Top" Width="120" IsEnabled="False" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,80,0,0" Name="textBlock9" Text="Sertlik" VerticalAlignment="Top" Width="83" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="167,79,0,0" Name="textBlock10" Text=":" VerticalAlignment="Top" Width="11" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="194,77,0,0" Name="txtHardness" VerticalAlignment="Top" Width="120" IsEnabled="False" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,112,0,0" Name="textBlock11" Text="Alaşım" VerticalAlignment="Top" Width="83" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="167,112,0,0" Name="textBlock12" Text=":" VerticalAlignment="Top" Width="11" />
+        <TextBox Height="23" HorizontalAlignment="left" Margin="194,109,0,0" Name="txtCompound" VerticalAlignment="Top" Width="120" IsEnabled="False" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,210,0,0" Name="textBlock13" Text="Mevcut Miktar" VerticalAlignment="Top" Width="83" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="167,210,0,0" Name="textBlock14" Text=":" VerticalAlignment="Top" Width="11" />
+        <TextBox Height="23" HorizontalAlignment="left" Margin="194,208,0,0" Name="txtAmount" VerticalAlignment="Top" Width="120" IsEnabled="False" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="194,240,0,0" Name="txtUsedAmount" VerticalAlignment="Top" Width="120" PreviewKeyDown="KeyDown_OnlyNumeric" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="320,44,0,0" Name="textBlock5" Text="mm" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="320,79,0,0" Name="textBlock6" Text="Rockwell" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="320,209,0,0" Name="textBlock15" Text="KG" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="320,244,0,0" Name="textBlock16" Text="KG" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="346,244,0,0" Name="tblRawMaterialsUsed" Text="kullanıldı." VerticalAlignment="Top" Foreground="Red" Visibility="Hidden" />
+        <Label Content="Kalite" Height="28" HorizontalAlignment="Left" Margin="5,140,0,0" Name="label5" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="193,141,0,0" Name="txtQuality" VerticalAlignment="Top" Width="121" IsEnabled="False" />
+        <Label Content="Yüzey Durumu" Height="28" HorizontalAlignment="Left" Margin="5,172,0,0" Name="label6" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="193,174,0,0" Name="txtSurfaceCondition" VerticalAlignment="Top" Width="121" IsEnabled="False" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="167,142,0,0" Name="textBlock17" Text=":" VerticalAlignment="Top" Width="11" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="167,176,0,0" Name="textBlock18" Text=":" VerticalAlignment="Top" Width="11" />
+        <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center" Height="41" Margin="15,280,27,0" Width="376">
+            <Button Content="İptal Et" Height="28" HorizontalAlignment="Left"  Name="btnCancel" Style="{StaticResource MyButtonStyle}" VerticalAlignment="Top" Width="106" Click="btnCancel_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Ozyaysan;component/images/Icon/btn_Update.png" Stretch="Fill" TileMode="None" />
+                </Button.Background>
+            </Button>
+            <Button Content="Kapat" Height="28" HorizontalAlignment="Left"  Name="btnClose" Style="{StaticResource MyButtonStyle}" VerticalAlignment="Top" Width="106" Click="btnClose_Click" Margin="20,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Ozyaysan;component/images/Icon/btn_Update.png" Stretch="Fill" TileMode="None" />
+                </Button.Background>
+            </Button>
+            <Button Content="Kaydet" Height="28" HorizontalAlignment="Left" Name="btnSave" Style="{StaticResource MyButtonStyle}" VerticalAlignment="Top" Width="106" Click="btnSave_Click" Margin="20,5,5,5">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Ozyaysan;component/images/Icon/btn_Update.png" Stretch="Fill" TileMode="None" />
+                </Button.Background>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="Ozyaysan.UserControls.UCAddOrder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignWidth="1054"
+             xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Height="auto">
+    <UserControl.Resources>
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="DarkGray" 
+                            CornerRadius="3" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Stretch"  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Musteri" Height="28" HorizontalAlignment="Left"  VerticalAlignment="Center" Name="label1"  FontSize="16" />
+        <ComboBox Grid.Row="0" Grid.Column="1" Height="30" HorizontalAlignment="Stretch"  Name="cmbCustomer" VerticalAlignment="Center"  FontSize="16" />
+        <Label Grid.Row="1" Grid.Column="0" Content="Tahmini Uretim Suresi(gün)" Height="44" HorizontalAlignment="Left"  Name="label6" VerticalAlignment="Center" FontSize="16" Width="210.8" Margin="0,26,0,10" />
+        <Label Grid.Row="1" Grid.Column="1" Height="28" FontWeight="Bold" Content="0" HorizontalAlignment="Center"  Name="lblProductionTime" VerticalAlignment="Center" FontSize="16" />
+        <TextBlock Grid.Row="1" Grid.Column="2"  HorizontalAlignment="Stretch"  Name="textBlock2" Text="(Bu veri teslimat tarihini belirlemede yol gösterici olması için hesaplanmıştır.)" VerticalAlignment="Center"  TextWrapping="Wrap" FontSize="14" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Teslimat Tarihi" Height="28" HorizontalAlignment="Left"  Name="label11" VerticalAlignment="Center" FontSize="16"  />
+        <my:DatePicker Grid.Row="2" Grid.Column="1" FontSize="16" HorizontalAlignment="Stretch"  Name="dpDateOfDelivery" VerticalAlignment="Center"  />
+        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Name="brdRightContentTitle"  Background="#FFE2DFDF" Height="25" HorizontalAlignment="Stretch"   VerticalAlignment="Center" Visibility="Visible">
+            <TextBlock HorizontalAlignment="Center" Height="23" x:Name="textBlock1"  FontSize="16" ><Run Text="Siparişi Verilen Yay"/><Run Text="lar"/></TextBlock>
+            <Image   Height="15" HorizontalAlignment="Right" MouseDown="lblDeleteProduct_MouseDown"  x:Name="imgDelete" Stretch="Fill" VerticalAlignment="Center" Width="15" Source="/Ozyaysan;component/images/Icon/delete.png" Margin="0,0,30,0"  />
+            <Image  Height="15" HorizontalAlignment="Right" Margin="0,0,5,0"  Name="imgAddProduct" Stretch="Fill" VerticalAlignment="Center" Width="15" Source="/Ozyaysan;component/images/Icon/add.png" MouseDown="lblAddProduct_MouseDown" />
+        </Grid>
+
+
+        <!--<Image Grid.Row="3" Margin="0,0,5,0" Grid.Column="4" Height="15" HorizontalAlignment="Right" MouseDown="lblAddProduct_MouseDown"  Name="image1" Stretch="Fill" VerticalAlignment="Center" Width="15" Source="/Ozyaysan;component/images/Icon/1368675511_plus-24.png" />
+        <Image Grid.Row="3" Margin="0,0,35,0" Grid.Column="4" Height="15" HorizontalAlignment="Right" MouseDown="lblDeleteProduct_MouseDown"  x:Name="imgDelete" Stretch="Fill" VerticalAlignment="Center" Width="15" Source="/Ozyaysan;component/images/Icon/delete.png" />-->
+        <my:DataGrid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" AutoGenerateColumns="False"  x:Name="dgOrderProduct" VerticalAlignment="Top"  Width="auto" MinHeight="246.116" CanUserAddRows="False" FontSize="16" >
+            <my:DataGrid.Columns>
+                <my:DataGridTemplateColumn>
+                    <my:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button    CommandParameter="{Binding ID}" Content="Incele"/>
+                        </DataTemplate>
+                    </my:DataGridTemplateColumn.CellTemplate>
+                </my:DataGridTemplateColumn>
+                <my:DataGridTextColumn
+                    Binding="{Binding Code}"  Header="Yay Kodu" Width="*" />
+
+                <my:DataGridTemplateColumn Header="Renk" Width="*" Selector.IsSelected="False">
+                    <my:DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Button  Background="{Binding CColor.RGBCode}" />
+                        </DataTemplate>
+                    </my:DataGridTemplateColumn.CellTemplate>
+
+                </my:DataGridTemplateColumn>
+                <!--<my:DataGridTextColumn
+                    Binding="{Binding PCode}"  Header="Renk" Width="100" />-->
+                <my:DataGridTextColumn
+                    Binding="{Binding OrderCount}" Header="Sipariş adeti" Width="*" />
+                <my:DataGridTextColumn
+                    Binding="{Binding UsedStockCountColored}" Header="Stoktan Kul. Adet(Renkli)" Width="*" />
+                <my:DataGridTextColumn
+                    Binding="{Binding UsedStockCountNonColored}" Header="Stoktan Kul. Adet(Renksiz)" Width="*" />
+                <my:DataGridTextColumn
+                    Binding="{Binding ProductionCount}" Header="Üretilecek Adet" Width="*" />
+            </my:DataGrid.Columns>
+        </my:DataGrid>
+
+
+        <Button Grid.Row="5" Grid.Column="0"  Height="44.941" FontSize="16" HorizontalAlignment="Left" Name="btnSearch" Style="{StaticResource MyButtonStyle}" Click="btnSave_Click" VerticalAlignment="Center" Width="177.481">
+            <Button.Background>
+                <ImageBrush ImageSource="/Ozyaysan;component/images/Icon/btn_Update.png" Stretch="Fill" TileMode="None" />
+            </Button.Background>
+            <Button.Content>Kaydet</Button.Content>
+        </Button>
+    </Grid>
+</UserControl>

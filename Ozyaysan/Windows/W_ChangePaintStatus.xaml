@@ -1,0 +1,88 @@
+﻿<Window x:Class="Ozyaysan.Windows.W_ChangePaintStatus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Yayın Durumu" Height="510" Width="446" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="DarkGray" 
+                            CornerRadius="3" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel VerticalAlignment="Top" Margin="0,20,0,0" Orientation="Horizontal" Height="50">
+            <TextBlock Height="23" HorizontalAlignment="Left"  Margin="10,12,0,10" Name="tblOem" Text="OEM Kod" VerticalAlignment="Center" />
+            <TextBox Name="txtOemCode"  Height="23" Margin="100,10,0,10"  VerticalAlignment="Center" Width="148" IsEnabled="False" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" Margin="0,0,0,0" Orientation="Horizontal" Height="50">
+            <TextBlock Height="23" HorizontalAlignment="Left"  Margin="10,12,0,10" Name="tblpaintCount" Text="Sipariş Adeti" VerticalAlignment="Center" />
+            <TextBox Name="txtPaintCount"  Height="23" Margin="83,10,0,10"  VerticalAlignment="Center" Width="148" IsEnabled="False" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" Margin="0,0,0,0" Orientation="Horizontal" Height="50">
+            <TextBlock Height="23" HorizontalAlignment="Left"  Margin="10,12,0,10" Name="tblProductedCount" Text="Üretilen Adet" VerticalAlignment="Center" />
+            <TextBox Name="txtProductedCount"  Height="23" Margin="79,10,0,10"  VerticalAlignment="Center" Width="148" IsEnabled="False" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" Margin="0,0,0,0" Orientation="Horizontal" Height="50">
+            <TextBlock Height="23" HorizontalAlignment="Left"  Margin="10,12,0,10" Name="tblStockCount" Text="Stoktan Alınan Adet" VerticalAlignment="Center" />
+            <TextBox Name="txtStockCount"  Height="23" Margin="44,10,0,10"  VerticalAlignment="Center" Width="148" IsEnabled="False" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" Margin="0,0,0,0" Orientation="Horizontal" Height="50">
+            <TextBlock Height="23" HorizontalAlignment="Left"  Margin="10,12,0,10" Name="tblColor" Text="Boyanacak Renk" VerticalAlignment="Center" />
+            <TextBox Name="txtColor"  Height="23" Margin="63,10,0,10"  VerticalAlignment="Center" Width="148" IsEnabled="False" />
+            <Border BorderBrush="Black" BorderThickness="1" Height="23" Name="brdRGBColor" Width="61" Margin="5,0,2,0" VerticalAlignment="Center" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" Margin="0,0,0,0" Orientation="Horizontal" Height="50">
+            <TextBlock Height="23" HorizontalAlignment="Left"  Margin="10,12,0,10" Name="tblPaintedCount" Text="Boyanan Adet" VerticalAlignment="Center" />
+            <TextBox Name="txtPaintedCount"  Height="23" Margin="74,10,0,10"  VerticalAlignment="Center" Width="148" IsEnabled="True" PreviewKeyDown="txtPaintedCount_PreviewKeyDown" Text="0" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" Margin="0,0,0,0" Orientation="Horizontal" Height="50">
+            <TextBlock Height="23" HorizontalAlignment="Left"  Margin="10,12,0,10" Name="textBlock1" Text="Boyanma Durumu" VerticalAlignment="Center" />
+            <ComboBox  x:Name="cmbOPStatus" Height="23" Margin="52,10,0,10"  VerticalAlignment="Center" Width="148" SelectionChanged="cmbOPStatus_SelectionChanged">
+                <ComboBoxItem Content="Henüz İmalatta" Name="cbpi2" Tag="2"  />
+                <ComboBoxItem Content="Boyahanede" Name="cbpi3" Tag="3"  />
+                <ComboBoxItem Content="Boyanıyor" Name="cbpi4" Tag="4" />
+                <ComboBoxItem Content="Hazir" Name="cbpi5" Tag="5" />
+                <ComboBoxItem Content="Gönderildi" Name="cbpi6" Tag="6" />
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Name="stkDelivered" VerticalAlignment="Top" Margin="0,0,0,0" Orientation="Horizontal" Height="50">
+            <TextBlock Height="23" HorizontalAlignment="Left"  Margin="10,12,0,10" Name="tblDeliveredCount" Text="Teslim Edilen Adet" VerticalAlignment="Center" />
+            <TextBox Name="txtDeliveredCount"  Height="23" Margin="50,10,0,10"  VerticalAlignment="Center" Width="148" IsEnabled="True" PreviewKeyDown="txtPaintedCount_PreviewKeyDown" Text="0" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="50">
+            <Grid>
+                <Button Height="32" Name="btnExamine" HorizontalAlignment="Left" Style="{StaticResource MyButtonStyle}" Width="135" Margin="10,8,0,10" Content="Yayı İncele" Click="btnExamine_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Ozyaysan;component/images/Icon/btn_Update.png" Stretch="Fill" TileMode="None" />
+                </Button.Background>
+            </Button>
+            <Button Click="btnSearch_Click"  Content="Kaydet" Height="32"  HorizontalAlignment="Left" Margin="160,8,0,0" Name="btnSearch" Style="{StaticResource MyButtonStyle}" VerticalAlignment="Top" Width="126">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Ozyaysan;component/images/Icon/btn_Update.png" Stretch="Fill" TileMode="None" />
+                </Button.Background>
+            </Button>
+            </Grid>
+
+        </StackPanel>
+   </StackPanel>
+    
+</Window>

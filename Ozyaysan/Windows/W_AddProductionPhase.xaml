@@ -1,0 +1,67 @@
+﻿<Window x:Class="Ozyaysan.Windows.W_AddProductionPhase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Yay Üretim Aşamaları" Height="370" Width="660" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner">
+    
+    <Grid>
+       
+        <Grid Name="grdPhases">
+        <Label Content="1.Aşama" Height="28" HorizontalAlignment="Left" Margin="29,12,0,0" Name="label1" VerticalAlignment="Top" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="131,12,0,0" Name="cmbMachine1" VerticalAlignment="Top" Width="120" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="328,12,0,0" Text="1" Name="txtProductionTime1" VerticalAlignment="Top" Width="92" PreviewKeyDown="txtProductionTime1_PreviewKeyDown" />
+        <Label HorizontalAlignment="Left" Margin="420,12,0,0">dk</Label>
+            <CheckBox Content="Onay" Height="16" HorizontalAlignment="left" Margin="457,15,0,0" Name="chcPhase1" VerticalAlignment="Top" Checked="chcPhase1_Checked" />
+        </Grid>
+        <Grid Name="grdPhases2" IsEnabled="False">
+            <Label Content="2.Aşama" Height="28" HorizontalAlignment="Left" Margin="29,41,0,0" Name="label2" VerticalAlignment="Top" />
+            <ComboBox Height="23" HorizontalAlignment="Left" Margin="131,41,0,0" Name="cmbMachine2" VerticalAlignment="Top" Width="120" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="328,41,0,0" Text="1"  Name="txtProductionTime2" VerticalAlignment="Top" Width="92"  PreviewKeyDown="txtProductionTime2_PreviewKeyDown" />
+            <Label HorizontalAlignment="Left" Margin="420,41,0,0">dk</Label>
+            <CheckBox Content="Onay" Height="16" HorizontalAlignment="Left" Margin="457,44,0,0" Name="chcPhase2" VerticalAlignment="Top" Checked="chcPhase2_Checked" />
+         </Grid>
+        <Grid Name="grdPhases3" IsEnabled="False">
+            <Label Content="3.Aşama" Height="28" HorizontalAlignment="Left" Margin="29,70,0,0" Name="label3" VerticalAlignment="Top" />
+            <ComboBox Height="23" HorizontalAlignment="Left" Margin="131,70,0,0" Name="cmbMachine3" VerticalAlignment="Top" Width="120" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="328,70,0,0" Text="1"  Name="txtProductionTime3" VerticalAlignment="Top" Width="92"  PreviewKeyDown="txtProductionTime3_PreviewKeyDown"/>
+            <Label HorizontalAlignment="Left" Margin="420,70,0,0">dk</Label>
+            <CheckBox Content="Onay" Height="16" HorizontalAlignment="Left" Margin="457,73,0,0" Name="chcPhase3" VerticalAlignment="Top" Checked="chcPhase3_Checked_1" />
+
+        </Grid>
+        <Grid Name="grdPhases4" IsEnabled="False">
+            <Label Content="4.Aşama" Height="28" HorizontalAlignment="Left" Margin="29,99,0,0" Name="label4" VerticalAlignment="Top" />
+            <ComboBox Height="23" HorizontalAlignment="Left" Margin="131,99,0,0" Name="cmbMachine4" VerticalAlignment="Top" Width="120" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="328,99,0,0" Text="1"  Name="txtProductionTime4" VerticalAlignment="Top" Width="92"  PreviewKeyDown="txtProductionTime4_PreviewKeyDown" />
+            <Label HorizontalAlignment="Left" Margin="420,99,0,0">dk</Label>
+            <CheckBox Content="Onay" Height="16" HorizontalAlignment="Left" Margin="457,102,0,0" Name="chcPhase4" VerticalAlignment="Top" Checked="chcPhase4_Checked" />
+
+        </Grid>
+        <Grid Name="grdPhases5" IsEnabled="False">
+            <Label Content="5.Aşama" Height="28" HorizontalAlignment="Left" Margin="29,128,0,0" Name="label5" VerticalAlignment="Top" />
+            <ComboBox Height="23" HorizontalAlignment="Left" Margin="131,128,0,0" Name="cmbMachine5" VerticalAlignment="Top" Width="120" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="328,128,0,0" Text="1"  Name="txtProductionTime5" VerticalAlignment="Top" Width="92"  PreviewKeyDown="txtProductionTime5_PreviewKeyDown" />
+            <Label HorizontalAlignment="Left" Margin="420,128,0,0">dk</Label>
+            <CheckBox Content="Onay" Height="16" HorizontalAlignment="Left" Margin="457,131,0,0" Name="chcPhase5" VerticalAlignment="Top" Checked="chcPhase5_Checked" />
+
+        </Grid>
+        <Grid Name="grdPhases6" IsEnabled="False">
+            <Label Content="6.Aşama" Height="28" HorizontalAlignment="Left" Margin="29,157,0,0" Name="label6" VerticalAlignment="Top" />
+            <ComboBox Height="23" HorizontalAlignment="Left" Margin="131,157,0,0" Name="cmbMachine6" VerticalAlignment="Top" Width="120" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="328,157,0,0" Text="1"  Name="txtProductionTime6" VerticalAlignment="Top" Width="92"  PreviewKeyDown="txtProductionTime6_PreviewKeyDown" />
+            <Label HorizontalAlignment="Left" Margin="420,157,0,0">dk</Label>
+            <CheckBox Content="Onay" Height="16" HorizontalAlignment="Left" Margin="457,160,0,0" Name="chcPhase6" VerticalAlignment="Top" Checked="chcPhase6_Checked" />
+
+        </Grid>
+       <Grid Name="grdPhases7" IsEnabled="False" Margin="0,0,-109,0">
+            <Label Content="7.Aşama" Height="28"  HorizontalAlignment="Left" Margin="29,186,0,0" Name="label7" VerticalAlignment="Top" />
+            <ComboBox Height="23" HorizontalAlignment="Left" Margin="131,186,0,0" Name="cmbMachine7" VerticalAlignment="Top" Width="120" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="328,186,0,0" Text="1"  Name="txtProductionTime7" VerticalAlignment="Top" Width="92"  PreviewKeyDown="txtProductionTime7_PreviewKeyDown"/>
+            <Label HorizontalAlignment="Left" Margin="420,186,0,0">dk</Label>
+            <CheckBox Content="Onay" Height="16" HorizontalAlignment="Left" Margin="457,189,0,0" Name="chcPhase7" VerticalAlignment="Top" Checked="chcPhase7_Checked" />
+
+        </Grid>
+        <Grid Name="grdLast">
+            <Button Content="Aşamaları Kaydet" Height="23" HorizontalAlignment="Left" Margin="29,231,0,0" Name="btnAddPhase" VerticalAlignment="Top" Width="120" Click="btnAddPhase_Click" />
+            <Label Name="lblWarning" Content="" Foreground="Red" Margin="149,229,0,0"  VerticalAlignment="Top"></Label>
+        </Grid>
+    </Grid>
+</Window>

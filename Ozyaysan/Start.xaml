@@ -1,0 +1,364 @@
+﻿<Window xmlns:UserControls="clr-namespace:Ozyaysan.UserControls"  x:Class="Ozyaysan.Start"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Özyaysan" 
+        mc:Ignorable="d" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+         WindowState="Maximized" Width="auto" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" WindowStyle="SingleBorderWindow">
+
+    <Grid Background="#FFE2DFDF">
+
+        <TabControl Margin="201,36,0,0" Background="#fff" SelectionChanged="TabControl_SelectionChanged" Name="TabControlMain">
+            <TabItem  Height="75" Background="{x:Null}" BorderBrush="{x:Null}"  Cursor="Hand">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Height="45" Width="50" Source="/Ozyaysan;component/images/Icon/Yay.png" ImageFailed="Image_ImageFailed" />
+                        <Label HorizontalAlignment="Center" Content="Yay" FontSize="16" Foreground="#000" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <Grid >
+                    <Grid Name="grdPTop" Cursor="Hand"  Height="35" Background="#FFE2DFDF" VerticalAlignment="Top">
+                        <Image Name="ImgPPlus"  Source="/Ozyaysan;component/images/Icon/1368675511_plus-24.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="9,6,0,6"></Image>
+                        <Label Name="lblNewProduct" HorizontalAlignment="Left" Width="59" Margin="26,2,0,8" Height="30" MouseDown="lblNewProduct_MouseDown">Yeni yay</Label>
+                        <Separator HorizontalAlignment="Left" Height="1" Margin="86,3,0,0" VerticalAlignment="Top" Width="25" >
+                            <Separator.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Separator.RenderTransform>
+                        </Separator>
+                        <Image Name="ImgPSearch"  Source="/Ozyaysan;component/images/Icon/ara.png" HorizontalAlignment="Left"  Width="15" Height="15" Margin="98,6,0,6"></Image>
+                        <Label Name="lblSearchProduct" HorizontalAlignment="Left" Width="79" Margin="125,2,0,8" Height="30" MouseDown="ProductSearch_MouseDown">Yay Arama</Label>
+
+                    </Grid>
+                    <Grid Name="GrdContentAddProduct" Margin="0,35,0,6" Visibility="Hidden">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#fff" Opacity="0.5"/>
+                        </Grid.Background>
+                    </Grid>
+                    <Grid Name="GrdContentSearchProduct" Margin="0,35,0,6"  >
+
+                    </Grid>
+                    <Grid Name="GrdContentProductDetail">
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Height="75" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Height="45" Width="50" Source="images\Icon\1368674997_user_male.png" ImageFailed="Image_ImageFailed_1" />
+                        <Label Content="Müşteri" FontSize="16" Foreground="#000" HorizontalAlignment="Center"  />
+
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid Name="grdCTop" Margin="0,0,0,533" Cursor="Hand" Background="#FFE2DFDF">
+                        <Image Name="ImgCPlus"  Source="/Ozyaysan;component/images/Icon/1368675511_plus-24.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="9,6,0,6"></Image>
+                        <Label Name="lblAddCustomer" HorizontalAlignment="Left" Width="100" Margin="30,2,0,8" Height="30" MouseDown="CustomerAdd_MouseDown">Yeni Musteri</Label>
+                        <Separator HorizontalAlignment="Left" Height="1" Margin="110,3,0,0" VerticalAlignment="Top" Width="25" >
+                            <Separator.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Separator.RenderTransform>
+                        </Separator>
+                        <Image Name="ImgCSearch"  Source="/Ozyaysan;component/images/Icon/ara.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="115,6,0,6"></Image>
+                        <Label Name="lblSearchCustomer" HorizontalAlignment="Left" Width="100" Margin="140,2,0,8" Height="30" MouseDown="CustomerSearch_MouseDown">Musteri Arama</Label>
+                    </Grid>
+                    <Grid Name="GrdContentAddCustomer" Margin="0,50,0,14"  Visibility="Hidden">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#fff" Opacity="0.5"/>
+                        </Grid.Background>
+                    </Grid>
+                    <Grid Name="GrdContentSearchCustomer" Margin="0,50,0,6" >
+
+                    </Grid>
+                    <Grid Name="GrdContentCustomerDetail">
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Height="75" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical" Cursor="Hand">
+                        <Image Height="45" Width="50" Source="/Ozyaysan;component/images/Icon/order.png" />
+                        <Label Content="Sipariş" FontSize="16" Foreground="#000" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid Name="grdOTop" Cursor="Hand"  Height="35" Background="#FFE2DFDF" VerticalAlignment="Top">
+                        <Image Name="ImgOPlus"  Source="/Ozyaysan;component/images/Icon/1368675511_plus-24.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="9,6,0,6"></Image>
+                        <Label Name="lblNewOrder" HorizontalAlignment="Left" Width="100" Margin="30,2,0,8" Height="30" Content="Yeni Siparis" MouseDown="OrderAdd_MouseDown"></Label>
+                        <Separator HorizontalAlignment="Left" Height="1" Margin="110,3,0,0" VerticalAlignment="Top" Width="25" >
+                            <Separator.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Separator.RenderTransform>
+                        </Separator>
+                        <Image Name="ImgOSearch"  Source="/Ozyaysan;component/images/Icon/ara.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="115,6,0,6"></Image>
+                        <Label Name="lblSearchOrder" HorizontalAlignment="Left" Width="100" Margin="140,2,0,8" Height="30" Content="Siparis Arama" MouseDown="OrderSearch_MouseDown"></Label>
+                    </Grid>
+                    <Grid Name="GrdContentAddOrder" Margin="0,50,0,14"  Visibility="Hidden">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#fff" Opacity="0.5"/>
+                        </Grid.Background>
+                    </Grid>
+                    <Grid Name="GrdContentSearchOrder" Margin="0,35,0,6" >
+
+                    </Grid>
+                    <Grid Name="GrdContentOrderDetail" Margin="0,35,0,6" >
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem  Height="75" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical" >
+                        <Image Height="45"   Source="/Ozyaysan;component/images/Icon/color.png" />
+                        <Label Content="Renk" FontSize="16" Foreground="#000" HorizontalAlignment="Center"  />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid Name="grdCOTop" Margin="0,0,0,533" Cursor="Hand" Background="#FFE2DFDF">
+                        <Image Name="ImgCOPlus"  Source="/Ozyaysan;component/images/Icon/1368675511_plus-24.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="9,6,0,6"></Image>
+                        <Label Name="lblNewColor" HorizontalAlignment="Left" Width="100" Margin="30,2,0,8" Height="30" Content="Yeni Renk" MouseDown="ColorAdd_MouseDown"></Label>
+                        <Separator HorizontalAlignment="Left" Height="1" Margin="110,3,0,0" VerticalAlignment="Top" Width="25" >
+                            <Separator.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Separator.RenderTransform>
+                        </Separator>
+                        <Image Name="ImgCOSearch"  Source="/Ozyaysan;component/images/Icon/ara.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="115,6,0,6"></Image>
+                        <Label Name="lblSearchColor" HorizontalAlignment="Left" Width="100" Margin="140,2,0,8" Height="30" Content="Renk Arama" MouseDown="ColorSearch_MouseDown"></Label>
+                    </Grid>
+                    <Grid Name="GrdContentAddColor" Margin="0,50,0,14"  Visibility="Hidden">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#fff" Opacity="0.5"/>
+                        </Grid.Background>
+                    </Grid>
+                    <Grid Name="GrdContentSearchColor" Margin="0,50,0,6" >
+
+                    </Grid>
+                    <Grid Name="GrdContentColorDetail" Margin="0,50,0,6" >
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem  Height="75" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Height="45" Width="50" Source="/Ozyaysan;component/images/Icon/operator.png" />                       
+                        <Label Content="Operatör" FontSize="16" Foreground="#000" HorizontalAlignment="Center" />                     
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid Name="grdOPTop" Margin="0,0,0,533" Cursor="Hand" Background="#FFE2DFDF">
+                        <Image Name="ImgOPPlus"  Source="/Ozyaysan;component/images/Icon/1368675511_plus-24.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="9,6,0,6"></Image>
+                        <Label Name="lblNewOperator" HorizontalAlignment="Left" Width="100" Margin="30,2,0,8" Height="30" Content="Yeni Operatör" MouseDown="OperatorAdd_MouseDown"></Label>
+                        <Separator HorizontalAlignment="Left" Height="1" Margin="120,3,0,0" VerticalAlignment="Top" Width="25" >
+                            <Separator.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Separator.RenderTransform>
+                        </Separator>
+                        <Image Name="ImgOPSearch"  Source="/Ozyaysan;component/images/Icon/ara.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="125,6,0,6"></Image>
+                        <Label Name="lblSearchOperator" HorizontalAlignment="Left" Width="100" Margin="150,2,0,8" Height="30" Content="Operatör Arama" MouseDown="OperatorSearch_MouseDown"></Label>
+                    </Grid>
+                    <Grid Name="GrdContentAddOperator" Margin="0,50,0,14"  Visibility="Hidden">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#fff" Opacity="0.5"/>
+                        </Grid.Background>
+                    </Grid>
+                    <Grid Name="GrdContentSearchOperator" Margin="0,50,0,6" >
+
+                    </Grid>
+                    <Grid Name="GrdContentOperatorDetail" Margin="0,50,0,6" >
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem  Height="75" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Height="45" Width="50" Source="/Ozyaysan;component/images/Icon/machine.png" />
+                        <Label Content="Makine" FontSize="16" Foreground="#000" HorizontalAlignment="Center"  />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid Name="grdMTop" Margin="0,0,0,533" Cursor="Hand" Background="#FFE2DFDF">
+                        <Image Name="ImgMPlus"  Source="/Ozyaysan;component/images/Icon/1368675511_plus-24.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="9,6,0,6"></Image>
+                        <Label Name="lblNewMachine" HorizontalAlignment="Left" Width="100" Margin="30,2,0,8" Height="30" Content="Yeni Makine" MouseDown="MachineAdd_MouseDown"></Label>
+                        <Separator HorizontalAlignment="Left" Height="1" Margin="120,3,0,0" VerticalAlignment="Top" Width="25" >
+                            <Separator.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Separator.RenderTransform>
+                        </Separator>
+                        <Image Name="ImgMSearch"  Source="/Ozyaysan;component/images/Icon/ara.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="125,6,0,6"></Image>
+                        <Label Name="lblSearchMachine" HorizontalAlignment="Left" Width="100" Margin="150,2,0,8" Height="30" Content="Makine Arama" MouseDown="MachineSearch_MouseDown"></Label>
+                    </Grid>
+                    <Grid Name="GrdContentAddMachine" Margin="0,50,0,14"  Visibility="Hidden">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#fff" Opacity="0.5"/>
+                        </Grid.Background>
+                    </Grid>
+                    <Grid Name="GrdContentSearchMachine" Margin="0,50,0,6" >
+
+                    </Grid>
+                    <Grid Name="GrdContentMachineDetail" Margin="0,50,0,6" >
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Height="75" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Height="43" Width="50" Source="/Ozyaysan;component/images/1377279369_data.png" />
+                        <Label Content="Stok" FontSize="16" Foreground="#000" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid Name="grdSTop" Margin="0,0,0,533" Cursor="Hand" Background="#FFE2DFDF">
+                        <Image Name="ImgMSlus"  Source="/Ozyaysan;component/images/Icon/1368675511_plus-24.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="9,6,0,6"></Image>
+                        <Label Name="lblStockEnterance" HorizontalAlignment="Left" Width="100" Margin="30,2,0,8" Height="30" Content="Stok Girişi" MouseDown="StockAdd_MouseDown"></Label>
+                        <Separator HorizontalAlignment="Left" Height="1" Margin="120,3,0,0" VerticalAlignment="Top" Width="25" >
+                            <Separator.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Separator.RenderTransform>
+                        </Separator>
+                        <Image Name="ImgSSearch"  Source="/Ozyaysan;component/images/Icon/ara.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="125,6,0,6"></Image>
+                        <Label Name="lblExamineStock" HorizontalAlignment="Left" Width="100" Margin="150,2,0,8" Height="30" Content="Stokları İncele" MouseDown="StockSearch_MouseDown"></Label>
+                    </Grid>
+                    <Grid Name="GrdContentAddStock" Margin="0,50,0,14"  Visibility="Hidden">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#fff" Opacity="0.5"/>
+                        </Grid.Background>
+                    </Grid>
+                    <Grid Name="GrdContentSearchStock" Margin="0,50,0,6" >
+
+                    </Grid>
+                    <Grid Name="GrdContentStockDetail" Margin="0,50,0,6" >
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem  Height="75" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical" >
+                        <Image Height="43" Width="50" Source="/Ozyaysan;component/images/1377317424_raw_material.png" />
+                        <Label Content="Hammadde" FontSize="16" Foreground="#000" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid Name="grdRawTop" Margin="0,0,0,533" Cursor="Hand" Background="#FFE2DFDF">
+                        <Image Name="ImgRawPlus"  Source="/Ozyaysan;component/images/Icon/1368675511_plus-24.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="9,6,0,6"></Image>
+                        <Label Name="lblRawMaterialEnterance" HorizontalAlignment="Left" Width="108" Margin="30,2,0,8" Height="30" Content="Hammadde Girişi" MouseDown="RawMaterialsAdd_MouseDown"></Label>
+                        <Separator HorizontalAlignment="Left" Height="1" Margin="139,3,0,0" VerticalAlignment="Top" Width="25" >
+                            <Separator.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Separator.RenderTransform>
+                        </Separator>
+                        <Image Name="ImgRawSearch"  Source="/Ozyaysan;component/images/Icon/ara.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="144,6,0,6"></Image>
+                        <Label Name="lblSearchrawMaterials" HorizontalAlignment="Left" Width="115" Margin="169,2,0,8" Height="30" Content="Hammadde İncele" MouseDown="RawMaterialsSearch_MouseDown"></Label>
+                    </Grid>
+                    <Grid Name="GrdContentAddRawMaterials" Margin="0,50,0,14"  Visibility="Hidden">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#fff" Opacity="0.5"/>
+                        </Grid.Background>
+                    </Grid>
+                    <Grid Name="GrdContentSearchRawMaterials" Margin="0,30,0,6" >
+
+                    </Grid>
+                    <Grid Name="GrdContentRawMaterialsDetail" Margin="0,50,0,6" >
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem  Height="75" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical" >
+                        <Image Height="43" Width="50" Source="/Ozyaysan;component/images/1377635012_Shopping_cart.png" />
+                        <Label Content="Satışlar" FontSize="16" Foreground="#000" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid Name="grdSellTop" Margin="0,0,0,533" Cursor="Hand" Background="#FFE2DFDF">
+
+                        <Image Name="ImgSellSearch"  Source="/Ozyaysan;component/images/Icon/ara.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="11,6,0,6"></Image>
+                        <Label HorizontalAlignment="Left" Width="115" Margin="36,2,0,8" Height="30" Content="Satışları İncele" MouseDown="SellSearch_MouseDown"></Label>
+                    </Grid>
+
+                    <Grid Name="GrdContentSearchSell" Margin="0,50,0,6" >
+
+                    </Grid>
+                    <Grid Name="GrdContentSellDetail" Margin="0,50,0,6" >
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem  Height="75" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical" >
+                        <Image Height="43" Width="50" Source="/Ozyaysan;component/images/1377804310_Login.png" />
+                        
+                            <Label Content="Şifre" FontSize="16" Foreground="#000" HorizontalAlignment="Center"/>
+                       
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid Name="grdPassTop" Margin="0,0,0,533" Cursor="Hand" Background="#FFE2DFDF">
+
+                        <Image Name="ImgPassSearch"  Source="/Ozyaysan;component/images/Icon/ara.png" HorizontalAlignment="Left" Width="15" Height="15" Margin="11,6,0,6"></Image>
+                        <Label Name="lblChangePass" HorizontalAlignment="Left" Width="115" Margin="36,2,0,8" Height="30" Content="Şifre Değiştir" MouseDown="ChangePassword_MouseDown"></Label>
+                    </Grid>
+
+                    <Grid Name="GrdContentChangePass" Margin="0,50,0,6" >
+
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid Height="577" HorizontalAlignment="Left" Margin="0,36,0,0" Name="grid1" VerticalAlignment="Top" Width="200">
+
+
+            <Image Height="101" HorizontalAlignment="Left" Margin="60,6,0,0" Name="imgProfile" Stretch="Fill" VerticalAlignment="Top" Width="84" Source="/Ozyaysan;component/images/Icon/1368674997_user_male.png" StretchDirection="Both" />
+            <TextBlock Height="23" Name="tblLoginName" TextAlignment="Center" HorizontalAlignment="Left" Margin="6,113,0,0"  Text="TextBlock" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Width="188" />
+        </Grid>
+    </Grid>
+</Window>

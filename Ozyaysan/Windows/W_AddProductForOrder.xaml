@@ -1,0 +1,76 @@
+﻿<Window x:Class="Ozyaysan.Windows.W_AddProductForOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="W_AddProductForOrder" Height="300" Width="auto" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
+ 
+         <Window.Resources>
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="DarkGray" 
+                            CornerRadius="3" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        </Window.Resources>
+        <Grid Height="260">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Yay" Height="30" FontSize="16" HorizontalAlignment="Left"  Name="label3"  RenderTransformOrigin="0.169,0.53" />
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+            <ComboBox   Height="30" FontSize="16" MinWidth="125"  HorizontalAlignment="Stretch" Name="cmbProduct" VerticalAlignment="Center"/>
+            <Image  Height="15" HorizontalAlignment="Right" Margin="10,0,0,0" Name="imgProductSearch" Source="/Ozyaysan;component/images/Icon/ara.png" Stretch="Fill" VerticalAlignment="Center" Width="15" MouseDown="imgProductSearch_MouseDown" />
+        </StackPanel>
+        <Label Grid.Row="0" Grid.Column="2" FontSize="16" Margin="30,0,0,0" Content="Renk" Height="30" HorizontalAlignment="Left" Name="label9" VerticalAlignment="Center" />
+        <ComboBox Grid.Row="0" Grid.Column="3" Margin="0,0,20,0" Height="30" FontSize="16" HorizontalAlignment="Stretch"  Name="cmbColor" VerticalAlignment="Center" />
+        <Image Grid.Row="0" Grid.Column="3" Height="15" HorizontalAlignment="Right"  x:Name="imgColorSearch" Source="/Ozyaysan;component/images/Icon/ara.png" Stretch="Fill" VerticalAlignment="Center" Width="15"  RenderTransformOrigin="-15.133,7.8" MouseDown="imgColorSearch_MouseDown" />
+        <Label Grid.Row="0" Grid.Column="4"  Margin="30,0,0,0" Content="Renksiz Stok Adedi" FontSize="16" Height="30" HorizontalAlignment="Left"  x:Name="label5_Copy3" VerticalAlignment="Center" />
+        <TextBox Grid.Row="0" Grid.Column="5" IsEnabled="False" Height="30" FontSize="16" HorizontalAlignment="Stretch"  x:Name="txtStockNonColored" VerticalAlignment="Center"  PreviewKeyDown="KeyDown_OnlyNumeric" />
+        <Label Grid.Row="0" Grid.Column="6" Content="Kullan" Height="30" FontSize="16" HorizontalAlignment="Left" x:Name="label9_Copy2" VerticalAlignment="Center"  />
+        <TextBox Grid.Row="0" Grid.Column="6" Height="30" HorizontalAlignment="Stretch" Margin="50,0,20,0"  x:Name="txtStockNonColoredUse" VerticalAlignment="Center"  PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16"  />
+        <Label Grid.Row="1" Grid.Column="6" Content="Kullan" FontSize="16" Height="30" HorizontalAlignment="Left"  x:Name="label9_Copy" VerticalAlignment="Center" />
+        <TextBox  Grid.Row="1" Grid.Column="6" Margin="50,0,20,0" Height="30" HorizontalAlignment="Stretch" x:Name="txtStockColoredUse" VerticalAlignment="Center" PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16" />
+        <Label Grid.Row="1" Grid.Column="0" FontSize="16" Content="Sipariş Adedi" Height="30" HorizontalAlignment="Left" Name="label5" VerticalAlignment="Center" />
+        <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" Height="30" Width="120" HorizontalAlignment="left"  Name="txtOrderCount" VerticalAlignment="Center" PreviewKeyDown="KeyDown_OnlyNumeric" />
+        <Label Grid.Row="1" Grid.Column="2"  Margin="30,0,0,0" FontSize="16" Content="Üretilecek adet" Height="30" HorizontalAlignment="Left" x:Name="label5_Copy" VerticalAlignment="Center" />
+        <TextBox Grid.Row="1" Grid.Column="3" Height="30" FontSize="16" HorizontalAlignment="Stretch"  x:Name="txtProductionCount" VerticalAlignment="Center" PreviewKeyDown="KeyDown_OnlyNumeric" />
+        <Label Grid.Row="1" Grid.Column="4"  Margin="30,0,0,0" FontSize="16" Content="Renkli Stok Adedi" Height="30" HorizontalAlignment="Left" x:Name="label5_Copy1" VerticalAlignment="Center"  />
+        <TextBox Grid.Row="1" Grid.Column="5" IsEnabled="False" Height="30" HorizontalAlignment="Stretch" x:Name="txtStockColored" VerticalAlignment="Center"  PreviewKeyDown="KeyDown_OnlyNumeric"  />
+        <Label Grid.Row="2" Grid.Column="0" Content="Ambalaj Sekli" Height="30" HorizontalAlignment="Left"  Name="label1" VerticalAlignment="Center" FontSize="16" />
+        <TextBox Grid.Row="2" Grid.Column="1" Height="30" HorizontalAlignment="Stretch"  Name="txtPackageType" VerticalAlignment="Center" FontSize="16" />
+        <Button Grid.Row="3" Grid.Column="0" Style="{StaticResource MyButtonStyle}"  Height="35" HorizontalAlignment="Stretch"  Name="btnSearch"  Click="btnAddProductToOrder_Click" FontSize="16"  Content=" Kaydet"  >
+            <Button.Background>
+                <ImageBrush ImageSource="/Ozyaysan;component/images/Icon/btn_Update.png" Stretch="Fill" TileMode="None" />
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

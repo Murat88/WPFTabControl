@@ -1,0 +1,144 @@
+﻿<UserControl x:Class="Ozyaysan.UserControls.UCSearchProduct"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ctr="clr-namespace:Ozyaysan.Controls"
+             xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
+    <UserControl.Resources>
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="DarkGray" 
+                            CornerRadius="3" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition MinHeight="400" Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Kod" Height="28" HorizontalAlignment="Left"  x:Name="label4"  FontSize="16"  />
+        <TextBox Grid.Row="0" Grid.Column="1" Height="30" Width="100" HorizontalAlignment="Left"  x:Name="txtCode"  TextChanged="txtCode_TextChanged" FontSize="16"   />
+        <Label Grid.Row="0" Grid.Column="2" Content="Kategori" Height="36" HorizontalAlignment="Left"  Name="label1" VerticalAlignment="Center" FontSize="16"  />
+        <ComboBox Grid.Row="0" Grid.Column="3"  Height="25" HorizontalAlignment="Left"  Name="cmbCategory"  Width="137" FontSize="16"></ComboBox>
+        <Label Grid.Row="0" Grid.Column="4" Content="Tel Çapı"  HorizontalAlignment="Left"  Name="label15" VerticalAlignment="Center" FontSize="16" />
+        <StackPanel Grid.Row="0" Grid.Column="5" Orientation="Horizontal">
+            <TextBox  Height="30"  Name="txtWireDiameterFirst"  HorizontalAlignment="Left" Width="50" FontSize="16"  />
+            <Label Content="--" Height="28" HorizontalAlignment="Left" Name="label12" VerticalAlignment="Center" />
+            <TextBox  Height="30"  Name="txtWireDiameterSecond" HorizontalAlignment="Left" Width="50" FontSize="16"  ></TextBox>
+        </StackPanel>
+        <Label Grid.Row="0" Grid.Column="6" Content="Yay Çapı" Height="34.348" HorizontalAlignment="Left"  Name="label6" VerticalAlignment="Center" FontSize="16"  />
+        <StackPanel Grid.Row="0" Grid.Column="7" Orientation="Horizontal">
+            <TextBox  Height="30" Width="50" HorizontalAlignment="Left" Name="txtDiameterFirst" VerticalAlignment="Center"  PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16"  />
+            <Label  Content="--" Height="28" HorizontalAlignment="Left" Name="label122" VerticalAlignment="Center"  />
+            <TextBox  Height="30" Width="50" HorizontalAlignment="Left"  Name="txtDiameterSecond" Margin="0,0,10,0" VerticalAlignment="Center"  PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16" />
+        </StackPanel>
+        <Label Grid.Row="1" Grid.Column="0" Content="Agirlik" Height="34.834" HorizontalAlignment="Left"  Name="label8" VerticalAlignment="Center" FontSize="16"  />
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <TextBox Height="30" HorizontalAlignment="Left"  Name="txtWeightFirst" Width="50" PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16"  />
+            <Label Content="--" Height="28" HorizontalAlignment="left"  Name="label14" VerticalAlignment="Center"  />
+            <TextBox Height="30" HorizontalAlignment="Left"  Name="txtWeightSecond" VerticalAlignment="Center" Width="58" PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16"  />
+        </StackPanel>
+        <Label Grid.Row="1" Grid.Column="2" Content="Form Sayisi" Height="33.116" HorizontalAlignment="Left" Name="label5"  Width="104" FontSize="16" />
+        <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
+            <TextBox Height="30" HorizontalAlignment="Left"  Name="txtNumberOfFormFirst"  Width="40" PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16"  />
+            <Label Content="--" Height="28" HorizontalAlignment="Left"  Name="label10" VerticalAlignment="Center"  />
+            <TextBox Height="30" HorizontalAlignment="Left"  Name="txtNumberOfFormSecond"  Width="40" PreviewKeyDown="KeyDown_OnlyNumeric" FontSize="16"  />
+        </StackPanel>
+        <Label Grid.Row="1" Grid.Column="4" Content="Extra Kod" Height="28" HorizontalAlignment="Left"  Name="label2"  Width="121.219" FontSize="16" />
+        <TextBox Grid.Row="1" Grid.Column="5" Height="30" HorizontalAlignment="Left"  Name="txtExtraKod" VerticalAlignment="Center" Width="136" FontSize="16"  />
+        <Label Grid.Row="1" Grid.Column="6" Content="Durum" Height="29.834" HorizontalAlignment="Left"  Name="label9" VerticalAlignment="Center" Width="77" FontSize="16"  />
+        <ComboBox  Grid.Row="1" Grid.Column="7" Height="30"  Name="cmbState" FontSize="16" Margin="0,0,10,0" />
+        <Button Grid.Row="2" Grid.Column="0"   Command="{Binding ShowPanelCommand}"  Height="35" HorizontalAlignment="Left"  Name="btnSearch" Style="{StaticResource MyButtonStyle}" Click="btnSearch_Click" FontSize="16"  Content="Ara" Width="132" >
+            <Button.Background>
+                <ImageBrush ImageSource="/Ozyaysan;component/images/Icon/btn_Update.png" Stretch="Fill" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <my:DataGrid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="8"  HorizontalAlignment="Stretch"  AutoGenerateColumns="False"  Name="dgProducts" VerticalAlignment="Top"  Height="auto" CanUserAddRows="False" FontSize="16" CanUserResizeColumns="False" Margin="0,0,10,0">
+            <my:DataGrid.Columns>
+                <my:DataGridTemplateColumn>
+                    <my:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button   CommandParameter="{Binding PID}" Width="40" Click="Button_Click">
+                                <Image Width="35" Height="35" Source="/Ozyaysan;component/images/Icon/examine.png" ></Image>
+                            </Button>
+                        </DataTemplate>
+                    </my:DataGridTemplateColumn.CellTemplate>
+                </my:DataGridTemplateColumn>
+                <my:DataGridTextColumn
+                 Binding="{Binding Path=CAName}" Header="Kategori" Width="*" />
+                <my:DataGridTextColumn
+                 Binding="{Binding Path=Code}" Header="OEM Kod" Width="*" />
+                <my:DataGridTextColumn
+                 Binding="{Binding Path=NumberOfTurns}" Header="Sarım Sayısı"  Width="*" />
+                <my:DataGridTextColumn
+                 Binding="{Binding Path=NumberOfForm}" Header="Form Sayısı"  Width="*" />
+                <my:DataGridTextColumn
+                 Binding="{Binding Path=WireDiameter}" Header="Tel Çapı"  Width="*" />
+                <my:DataGridTextColumn
+                 Binding="{Binding Path=StraighteningLength}" Header="Doğrultma Boyu" Width="*" />
+                <my:DataGridTextColumn
+                 Binding="{Binding Path=Weight}" Header="Ağırlık"  Width="*" />
+
+                <my:DataGridTextColumn
+                 Binding="{Binding Path=SName}" Header="Durum" Width="*"  />
+
+
+            </my:DataGrid.Columns>
+        </my:DataGrid>
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="8" Height="29" HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Bottom"  Orientation="Horizontal">
+            <Button Content="&lt;&lt;" Height="23" Name="btnAlPrevious" Width="22" Click="btnAlPrevious_Click" />
+            <Button Content="&lt;" Height="23" Name="btn1Previous" Width="17" Click="btn1Previous_Click" />
+            <TextBox Height="23" Name="txtPage" Width="30" Text="0" TextAlignment="Center" IsEnabled="False" FontWeight="Bold" />
+            <Button Content="&gt;" Height="23" Name="btn1Forward" Width="17" Click="btn1Forward_Click" />
+            <Button Content="&gt;&gt;" Height="23" Name="btnAllForward" Width="22" Click="btnAllForward_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" Margin="120,0,0,0" Height="29" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
+            <Label Content="0" FontFamily="Tahoma" FontSize="12" Foreground="#000" Height="28" HorizontalAlignment="Left" FontWeight="Bold" Name="lblRecordCount"  />
+            <Label Content=" kayıt bulundu   " FontFamily="Tahoma" FontSize="12" Foreground="#000" Height="28" HorizontalAlignment="Left"  Name="label24"   />
+        </StackPanel>
+        <!--<ctr:LoadingPanel  x:Name="loProudctSearch"  Grid.Row="4" Grid.Column="2" 
+                        IsLoading="{Binding PanelLoading}"
+                        Message="{Binding PanelMainMessage}"
+                        SubMessage="{Binding PanelSubMessage}" 
+                        ClosePanelCommand="{Binding PanelCloseCommand}" />-->
+
+
+
+    </Grid>
+    
+      
+   
+</UserControl>
